@@ -1,0 +1,6 @@
+* Dotfiles managed by `stow`
+Config files are organized into folders.
+** Instructions
+1) `git clone <github link> ~/dotfiles`
+2) `cd ~/dotfiles`
+3) `stow <name>` where name is the folder name to symlink to correct location.
