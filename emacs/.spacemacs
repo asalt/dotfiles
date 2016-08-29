@@ -54,7 +54,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ox-reveal snakemake-mode ebib)
+   dotspacemacs-additional-packages '(ox-reveal
+                                      snakemake-mode ebib
+                                      sphinx-doc)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -253,7 +255,7 @@ It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
   (setq auto-fill-mode nil)
-  (add-hook 'text-mode-hook 'toggle-word-wrap)
+  (add-hook 'text-mode-hook 'toggle-word-wrap 'auto-fill-mode)
   ;;(add-hook 'text-mode-hook 'toggle-spelling-checking-on)
   (setq-default dotspacemacs-themes '(material))
   (setq python-fill-column 100)
@@ -263,6 +265,7 @@ in `dotspacemacs/user-config'."
   ;; (load-library "ox-reveal")
   ;; (add-hook org (require 'ox-reveal))
   (spacemacs|use-package-add-hook org :post-config (require 'ox-reveal))
+  (spacemacs|use-package-add-hook python :post-config (require 'sphinx-doc-mode))
   )
 
 (defun dotspacemacs/user-config ()

@@ -15,7 +15,7 @@ gpip(){
 # BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=$HOME/Virtualenvs
 export PROJECT_HOME=$HOME/Projects
 export PYTHONSTARTUP=$HOME/.ipython/profile_default/startup/00-pythonstartup.py
 #source /usr/local/bin/virtualenvwrapper.sh

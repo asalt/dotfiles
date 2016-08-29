@@ -1,6 +1,24 @@
 import sys
 import os
 import re
+proceed = True
+
+if not sys.executable.lower().endswith('virtualenvs/py35/bin/python3.5'):
+    proceed = False
+if proceed:
+    import matplotlib as mpl
+
+    mpl.use("pgf")
+    pgf_with_pdflatex = {
+        "pgf.texsystem": "pdflatex",
+        "pgf.preamble": [
+            r"\usepackage[utf8x]{inputenc}",
+            r"\usepackage[T1]{fontenc}",
+            r"\usepackage{cmbright}",
+            ]
+    }
+    mpl.rcParams.update(pgf_with_pdflatex)
+
 
 try:
     import numpy as np

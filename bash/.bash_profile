@@ -16,6 +16,7 @@ alias py35='source ~/Virtualenvs/py35/bin/activate'
 alias csv_viewer=csv_viewer_func
 alias ll='ls -halt'
 alias xtex='xelatex -synctex=1 -interaction=nonstopmode'
+alias showip='ip addr show eth0 | grep inet | awk \'{ print $2; }\' | sed \'s/\/.*$//\''
 #alias ctags="`brew --prefix`/bin/ctags"
 # Git branch in prompt.
 
