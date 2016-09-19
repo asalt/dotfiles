@@ -18,4 +18,8 @@ gpip(){
 export WORKON_HOME=$HOME/Virtualenvs
 export PROJECT_HOME=$HOME/Projects
 export PYTHONSTARTUP=$HOME/.ipython/profile_default/startup/00-pythonstartup.py
+
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"                  # $EDITOR should open in terminal
+export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI with non-daemon as alternate
 #source /usr/local/bin/virtualenvwrapper.sh

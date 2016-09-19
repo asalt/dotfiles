@@ -10,10 +10,10 @@ if proceed:
 
     mpl.use("pgf")
     pgf_with_pdflatex = {
-        "pgf.texsystem": "pdflatex",
+        "pgf.texsystem": "xelatex",
         "pgf.preamble": [
-            r"\usepackage[utf8x]{inputenc}",
-            r"\usepackage[T1]{fontenc}",
+            # r"\usepackage[utf8x]{inputenc}",
+            # r"\usepackage[T1]{fontenc}",
             r"\usepackage{cmbright}",
             ]
     }
