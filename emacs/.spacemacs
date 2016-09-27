@@ -25,9 +25,11 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      ;; better-defaults
+     common-lisp
      c-c++
      emacs-lisp
      (latex :variables latex-enable-folding t)
+     ess
      git
      ranger
      (org :variables
@@ -47,6 +49,7 @@ values."
      markdown
      shell
      ibuffer
+     search-engine
      ;; pdf-tools
      yaml
      )
@@ -273,6 +276,7 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   ;; (global-linum-mode) ; Show line numbers by default
+  (setq inferior-lisp-program "/usr/local/bin/clisp")
   (with-eval-after-load 'org
     (unless (boundp 'org-export-latex-classes)
       (setq org-export-latex-classes nil))

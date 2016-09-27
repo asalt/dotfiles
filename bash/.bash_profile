@@ -5,9 +5,11 @@ export PATH=/usr/local/bin:$PATH
 # Load .bashrc if it exists
 test -f ~/.bashrc && source ~/.bashrc
 
-#if [ -f $(brew --prefix)/etc/bash_completion ]; then
-#    source $(brew --prefix)/etc/bash_completion
-#fi
+if [[ $(uname -s) == Linux ]]; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+       source $(brew --prefix)/etc/bash_completion
+    fi
+fi
 
 function csv_viewer_func(){
     csvlook $@ | less -S
