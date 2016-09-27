@@ -59,7 +59,9 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(ox-reveal
                                       snakemake-mode ebib
-                                      sphinx-doc)
+                                      sphinx-doc
+                                      htmlize.el
+                                      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -257,7 +259,8 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
-  (setq auto-fill-mode nil)
+  ;; (setq auto-fill-mode nil)
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)
   (add-hook 'text-mode-hook 'toggle-word-wrap 'auto-fill-mode)
   ;;(add-hook 'text-mode-hook 'toggle-spelling-checking-on)
   (setq-default dotspacemacs-themes '(material))
