@@ -1,7 +1,7 @@
 # Aliases
 len <- length
-pwd <- getwd()
-exit <- q()
+pwd <- getwd
+exit <- q
 
 # Make prompt like python prompt
 options(prompt=">>> ")
