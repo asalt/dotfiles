@@ -40,7 +40,8 @@ def _plotting(context='talk', style='white', palette='muted', **kwargs):
     changed if desired.
     """
     plt.rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
-    plt.rc('text', usetex=True)
+    # plt.rc('text', usetex=True)
+    plt.rc('text', usetex=False)  # explicitly change to True when desired
     sb.set_context(context)
     sb.set_style(style)
     sb.set_palette(palette)

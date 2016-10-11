@@ -47,7 +47,7 @@ values."
      markdown
      shell
      ibuffer
-     ;; pdf-tools
+     pdf-tools
      yaml
      )
    ;; List of additional packages that will be installed without being
