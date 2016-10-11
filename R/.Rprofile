@@ -1,12 +1,14 @@
 # Aliases
 len <- length
+pwd <- getwd()
+exit <- q()
 
 # Make prompt like python prompt
 options(prompt=">>> ")
 options(continue="... ")
 
 #editor
-options(editor="emacsclient -t") 
+options(editor="emacsclient -t")
 
 #
 options(max.print=100)
@@ -15,7 +17,8 @@ options(max.print=100)
 utils::rc.settings(ipck=TRUE)
 
 # colors
-if(Sys.getenv("TERM") == "xterm-256color")
+## if(Sys.getenv("TERM") == "xterm-256color")
+if(endsWith(Sys.getenv("TERM"), "256color"))
   library("colorout")
 
 
