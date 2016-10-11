@@ -18,7 +18,8 @@ alias mv='mv -i'
 
 alias ..='cd ..'
 
-alias env tmux='TERM=xterm-256color tmux'
+# alias env tmux='TERM=xterm-256color tmux'
+alias tmux='tmux -2'
 
 alias showip='ip addr show eth0 | grep inet | awk \'{ print $2; }\' | sed \'s/\/.*$//\''
 

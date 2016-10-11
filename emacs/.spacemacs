@@ -49,8 +49,8 @@ values."
      markdown
      shell
      ibuffer
+     pdf-tools
      search-engine
-     ;; pdf-tools
      yaml
      )
    ;; List of additional packages that will be installed without being
