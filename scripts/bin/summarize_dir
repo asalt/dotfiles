@@ -1,0 +1,143 @@
+#!/bin/bash
+# ---------------------------------------------------------------------------
+# summarize_dir - Simple script for summarizing all files in a directory and all subdirectories as a csv file.
+
+# Copyright 2016, Alex,,, <alex@alex-All-Series>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License at <http://www.gnu.org/licenses/> for
+# more details.
+
+# Usage: summarize_dir [-h|--help] [-s|--separator SEPARATOR] [-q|--quote QUOTE]
+
+# Revision history:
+# 2016-08-17 Created by new_script.sh ver. 3.3
+# ---------------------------------------------------------------------------
+
+PROGNAME=${0##*/}
+VERSION="0.1"
+
+clean_up() { # Perform pre-exit housekeeping
+  return
+}
+
+error_exit() {
+  echo -e "${PROGNAME}: ${1:-"Unknown Error"}" >&2
+  clean_up
+  exit 1
+}
+
+graceful_exit() {
+  clean_up
+  exit
+}
+
+signal_exit() { # Handle trapped signals
+  case $1 in
+    INT)
+      error_exit "Program interrupted by user" ;;
+    TERM)
+      echo -e "\n$PROGNAME: Program terminated" >&2
+      graceful_exit ;;
+    *)
+      error_exit "$PROGNAME: Terminating on unknown signal" ;;
+  esac
+}
+
+usage() {
+  echo -e "Usage: $PROGNAME [-h|--help] [-s|--separator SEPARATOR] [-q|--quote QUOTE]
+                            [-p|--path PATH] [-o|--out OUT]"
+}
+
+help_message() {
+  cat <<- _EOF_
+  $PROGNAME ver. $VERSION
+  Simple script for summarizing all files in a directory and all subdirectories as a csv file.
+
+  $(usage)
+
+  Options:
+  -h, --help  Display this help message and exit.
+  -s, --separator SEPARATOR  sep
+    Where 'SEPARATOR' is the field separator (Default ,)
+  -q, --quote QUOTE  quote
+    Where 'QUOTE' is the Quote Character (default ").
+  -p, --path PATH  path
+    Where 'PATH' is the path (default .)
+  -o, --out OUT  out
+    Where 'OUT' is the output file (default dir_summary.csv)
+
+_EOF_
+  return
+}
+
+# Trap signals
+trap "signal_exit TERM" TERM HUP
+trap "signal_exit INT"  INT
+
+
+summarize(){
+    SEP="$1"
+    Q="$2"
+    P="$3"
+    OUT="$4"
+
+    EXIT=0
+
+    echo -e "${Q}PATH${Q}${SEP}${Q}FILE${Q}${SEP}${Q}DATE${Q}${SEP}${Q}SIZE (bytes)${Q}" > $OUT
+
+    EXIT=$?
+
+    # ignore recycle bin from windows machines
+    find $P -path "*\$RECYCLE.BIN*" -prune -o \
+    -type f \
+    -printf "${Q}"'%h'"${Q}${SEP}${Q}"'%f'"${Q}${SEP}${Q}"'%Tm/%Td/%TY %Tr'"${Q}${SEP}${Q}"'%k'"${Q}"'\n' >> $OUT
+
+    EXIT=$?
+}
+
+SEP=','
+QUOTE='"'
+P='.'
+OUT='./dir_summary.csv'
+
+# Parse command-line
+while [[ -n $1 ]]; do
+  case $1 in
+    -h | --help)
+      help_message; graceful_exit ;;
+    -s | --separator)
+      shift; SEP="$1" ;;
+    -q | --quote)
+      shift; QUOTE="$1" ;;
+    -p | --path)
+      shift; P="$1" ;;
+    -o | --out)
+      shift; OUT="$1" ;;
+    -* | --*)
+      usage
+      error_exit "Unknown option $1" ;;
+    *)
+      echo "Argument $1 to process..." ;;
+  esac
+  shift
+done
+
+# Main logic
+printf "Summarizing..."
+summarize $SEP $QUOTE $P $OUT
+EXIT=$?
+if [ $EXIT = 0 ]; then
+    printf "done\n"
+    printf "Summary written to $OUT\n"
+else
+    printf "something went wrong!\n"
+fi
+graceful_exit

@@ -35,6 +35,7 @@ end
 
 set -g -x WORKON_HOME $HOME/Virtualenvs
 set -g -x PYTHONSTARTUP $HOME/.ipython/profile_default/startup/00-pythonstartup.py
+set PATH $PATH $HOME/edirect
 
 set -g -x ALTERNATE_EDITOR ""
 set -g -x EDITOR "emacsclient -t"                  # $EDITOR should open in terminal

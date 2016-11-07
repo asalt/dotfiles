@@ -18,6 +18,7 @@ export TERM=xterm-256color
 export WORKON_HOME=$HOME/Virtualenvs
 export PROJECT_HOME=$HOME/Projects
 export PYTHONSTARTUP=$HOME/.ipython/profile_default/startup/00-pythonstartup.py
+export PATH=$PATH:$HOME/edirect
 
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"                  # $EDITOR should open in terminal
