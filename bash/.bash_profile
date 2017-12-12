@@ -15,12 +15,14 @@ function csv_viewer_func(){
     csvlook $@ | less -S
 }
 alias py35='source ~/Virtualenvs/py35/bin/activate'
+alias py36='source ~/Virtualenvs/py36/bin/activate'
 alias csv_viewer=csv_viewer_func
 alias ll='ls -halt'
 alias xtex='xelatex -synctex=1 -interaction=nonstopmode'
 alias showip='ip addr show eth0 | grep inet | awk \'{ print $2; }\' | sed \'s/\/.*$//\'
 alias edit='emacsclient -t'
 alias sedit='sudo emacsclient -t'
+alias show-fonts=`fc-list :outline -f "%{family}\n" | sort -u | less
 
 #alias ctags="`brew --prefix`/bin/ctags"
 # Git branch in prompt.
@@ -35,5 +37,6 @@ export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
 # Set CLICOLOR for Ansi Colors in iTerm2
 export CLICOLOR=1
 
+export CDPATH=/mnt/e/:/mnt/e/MyStuff/MyDocs/:$CDPATH
 # Set colors to match iTerm2 Terminal Colors
 # export Term=xterm-256color

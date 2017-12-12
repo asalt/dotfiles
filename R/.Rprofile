@@ -16,8 +16,10 @@ options(max.print=300)
 # disable graphical menu option - use the command line instead
 options(menu.graphics=FALSE)
 
+options(editor="vim")
+
 # allows tab-completion of package names for use in "library()" or "require()" calls.
-utils::rc.settings(ipck=TRUE)
+utils::rc.settings(ipck=TRUE, fuzzy=TRUE)
 
 # colors
 ## if(Sys.getenv("TERM") == "xterm-256color")

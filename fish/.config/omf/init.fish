@@ -8,6 +8,7 @@ function csv_viewer_func
 end
 
 alias py35='source ~/Virtualenvs/py35/bin/activate.fish'
+alias py36='source ~/Virtualenvs/py36/bin/activate.fish'
 alias csv_viewer=csv_viewer_func
 alias ll='ls -halt'
 alias xtex='xelatex -synctex=1 -interaction=nonstopmode'
@@ -20,6 +21,7 @@ alias ..='cd ..'
 
 # alias env tmux='TERM=xterm-256color tmux'
 alias tmux='tmux -2'
+alias show-fonts='fc-list :outline -f "%{family}\n" | sort -u | less'
 
 alias showip='ip addr show eth0 | grep inet | awk \'{ print $2; }\' | sed \'s/\/.*$//\''
 

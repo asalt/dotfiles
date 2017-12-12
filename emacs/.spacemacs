@@ -18,6 +18,8 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     csv
+     nginx
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -52,15 +54,17 @@ values."
      pdf-tools
      search-engine
      yaml
+     shell-scripts
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ox-reveal
+   dotspacemacs-additional-packages '(
+                                      ;; ox-reveal
                                       snakemake-mode ebib
                                       sphinx-doc
-                                      htmlize.el
+                                      ;; htmlize.el
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -266,12 +270,14 @@ in `dotspacemacs/user-config'."
   (setq-default dotspacemacs-themes '(material))
   (setq python-fill-column 100)
   (setq python-shell-virtualenv-path "~/Virtualenvs/py35")
+
+  (setq-default TeX-engine 'xetex)
   ;; (require 'org)
   ;; (org-reload)
   ;; (load-library "ox-reveal")
   ;; (add-hook org (require 'ox-reveal))
-  (spacemacs|use-package-add-hook org :post-config (require 'ox-reveal))
-  (spacemacs|use-package-add-hook python :post-config (require 'sphinx-doc-mode))
+  ;; (spacemacs|use-package-add-hook org :post-config (require 'ox-reveal))
+  ;; (spacemacs|use-package-add-hook python :post-config (require 'sphinx-doc-mode))
   )
 
 (defun dotspacemacs/user-config ()
@@ -295,6 +301,10 @@ layers configuration. You are free to put any user code."
                    ("\\paragraph{%s}" . "\\paragraph*{%s}")
                    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
     (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+    ;; (orb-babel-do-load-languages
+    ;;  'org-babel-load-languages
+    ;;  '((sh . t)
+    ;;    (python . t)))
     )
   ;;(setq-default buffer-file-coding-system 'utf-8-unix)
   ;;(setq-default default-buffer-file-coding-system 'utf-8-unix)
