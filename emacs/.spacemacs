@@ -18,8 +18,10 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     php
      csv
      nginx
+     bibtex
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -34,16 +36,17 @@ values."
      ess
      git
      ranger
-     (org :variables
-          org-export-latex-classes nil
-          org-enable-reveal-js t)
+     org
+     ;; (org :variables
+     ;;      org-export-latex-classes nil
+     ;;      org-enable-reveal-js t)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      spell-checking
      ;; version-control
      ;; python ; will need additional configuration
-     (python :variables python-shell-virtualenv-path "~/Virtualenvs/py35/")
+     (python :variables python-shell-virtualenv-path "~/Virtualenvs/py36/")
      themes-megapack
      (javascript :variables javascript-disable-tern-port-files nil)
      (syntax-checking :variables syntax-checking-enable-by-default nil)
@@ -64,6 +67,7 @@ values."
                                       ;; ox-reveal
                                       snakemake-mode ebib
                                       sphinx-doc
+                                      ;; ox-bibtex
                                       ;; htmlize.el
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -269,7 +273,7 @@ in `dotspacemacs/user-config'."
   ;;(add-hook 'text-mode-hook 'toggle-spelling-checking-on)
   (setq-default dotspacemacs-themes '(material))
   (setq python-fill-column 100)
-  (setq python-shell-virtualenv-path "~/Virtualenvs/py35")
+  (setq python-shell-virtualenv-path "~/Virtualenvs/py36")
 
   (setq-default TeX-engine 'xetex)
   ;; (require 'org)
@@ -278,6 +282,7 @@ in `dotspacemacs/user-config'."
   ;; (add-hook org (require 'ox-reveal))
   ;; (spacemacs|use-package-add-hook org :post-config (require 'ox-reveal))
   ;; (spacemacs|use-package-add-hook python :post-config (require 'sphinx-doc-mode))
+  ;; (require 'ox-bibtex)
   )
 
 (defun dotspacemacs/user-config ()
@@ -304,7 +309,7 @@ layers configuration. You are free to put any user code."
     ;; (orb-babel-do-load-languages
     ;;  'org-babel-load-languages
     ;;  '((sh . t)
-    ;;    (python . t)))
+   ;;    (python . t)))
     )
   ;;(setq-default buffer-file-coding-system 'utf-8-unix)
   ;;(setq-default default-buffer-file-coding-system 'utf-8-unix)
@@ -314,3 +319,47 @@ layers configuration. You are free to put any user code."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   (vector "#657b83" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"))
+ '(custom-enabled-themes (quote (sanityinc-tomorrow-blue)))
+ '(custom-safe-themes
+   (quote
+    ("82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" default)))
+ '(evil-want-Y-yank-to-eol t)
+ '(fci-rule-color "#eee8d5" t)
+ '(hl-sexp-background-color "#1c1f26")
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dc322f")
+     (40 . "#cb4b16")
+     (60 . "#b58900")
+     (80 . "#859900")
+     (100 . "#2aa198")
+     (120 . "#268bd2")
+     (140 . "#d33682")
+     (160 . "#6c71c4")
+     (180 . "#dc322f")
+     (200 . "#cb4b16")
+     (220 . "#b58900")
+     (240 . "#859900")
+     (260 . "#2aa198")
+     (280 . "#268bd2")
+     (300 . "#d33682")
+     (320 . "#6c71c4")
+     (340 . "#dc322f")
+     (360 . "#cb4b16"))))
+ '(vc-annotate-very-old-color nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 98 :width normal)))))

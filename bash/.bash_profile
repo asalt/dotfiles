@@ -14,6 +14,14 @@ fi
 function csv_viewer_func(){
     csvlook $@ | less -S
 }
+
+function fix_mac_lf(){
+
+    tr '\r' '\n' < $1 > .tmp
+    yes | mv .tmp $1
+
+}
+
 alias py35='source ~/Virtualenvs/py35/bin/activate'
 alias py36='source ~/Virtualenvs/py36/bin/activate'
 alias csv_viewer=csv_viewer_func
@@ -23,6 +31,7 @@ alias showip='ip addr show eth0 | grep inet | awk \'{ print $2; }\' | sed \'s/\/
 alias edit='emacsclient -t'
 alias sedit='sudo emacsclient -t'
 alias show-fonts=`fc-list :outline -f "%{family}\n" | sort -u | less
+alias wcl='wc -l'
 
 #alias ctags="`brew --prefix`/bin/ctags"
 # Git branch in prompt.

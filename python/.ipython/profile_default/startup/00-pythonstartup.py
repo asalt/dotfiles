@@ -3,28 +3,30 @@ import os
 import re
 proceed = True
 
-if not sys.executable.lower().endswith('virtualenvs/py35/bin/python3.5'):
+# if not sys.executable.lower().endswith('virtualenvs/py35/bin/python3.5'):
+if not sys.executable.lower().endswith('virtualenvs/py36/bin/python3.6'):
     proceed = False
 if proceed:
     import matplotlib as mpl
 
-    mpl.use("pgf")
-    pgf_with_pdflatex = {
-        "pgf.texsystem": "xelatex",
-        "pgf.preamble": [
-            # r"\usepackage[utf8x]{inputenc}",
-            # r"\usepackage[T1]{fontenc}",
-            r"\usepackage{cmbright}",
-            ]
-    }
-    mpl.rcParams.update(pgf_with_pdflatex)
+    # mpl.use("pgf")
+    # pgf_with_pdflatex = {
+    #     "pgf.texsystem": "xelatex",
+    #     "pgf.preamble": [
+    #         # r"\usepackage[utf8x]{inputenc}",
+    #         # r"\usepackage[T1]{fontenc}",
+    #         r"\usepackage{cmbright}",
+    #         ]
+    # }
+    # mpl.rcParams.update(pgf_with_pdflatex)
 
 
 try:
     import numpy as np
     import pandas as pd
-    import matplotlib.pyplot as plt
     import matplotlib as mpl
+    mpl.use("TkAgg")
+    import matplotlib.pyplot as plt
     import seaborn as sb
 except ImportError:
     pass
@@ -39,7 +41,9 @@ def _plotting(context='talk', style='white', palette='muted', **kwargs):
     Uses seaborn palette, context, and color codes, which can be
     changed if desired.
     """
-    plt.rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
+    # plt.rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
+    plt.rc('font',**{'family':'sans-serif','sans-serif':["DejaVu Sans", "Arial", "Liberation Sans",
+                          "Bitstream Vera Sans", "sans-serif"]})
     # plt.rc('text', usetex=True)
     plt.rc('text', usetex=False)  # explicitly change to True when desired
     sb.set_context(context)

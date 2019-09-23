@@ -19,8 +19,11 @@ export WORKON_HOME=$HOME/Virtualenvs
 export PROJECT_HOME=$HOME/Projects
 export PYTHONSTARTUP=$HOME/.ipython/profile_default/startup/00-pythonstartup.py
 export PATH=$PATH:$HOME/edirect
+export PATH=$PATH:$HOME/meme/bin
 
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"                  # $EDITOR should open in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI with non-daemon as alternate
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Qt-5.9.7/lib/
+export LD_LIBRARY_PATH="/usr/local/lib64/R/lib:$LD_LIBRARY_PATH"
 #source /usr/local/bin/virtualenvwrapper.sh
