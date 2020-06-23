@@ -41,5 +41,6 @@ wideScreen <- function(howWide=NA){
 }
 wideScreen()
 
+options(bitmapType='cairo')
 
 message("\n*** Successfully loaded .Rprofile ***\n")

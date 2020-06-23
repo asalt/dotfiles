@@ -55,6 +55,7 @@ alias edit='emacsclient -t'
 alias sedit='sudo emacsclient -t'
 
 alias wcl='wc -l'
+alias r='radian'
 
 set -g -x PIP_REQUIRE_VIRTUALENV true
 
